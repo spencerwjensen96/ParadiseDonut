@@ -6,6 +6,7 @@ function App() {
   fetch('https://61eq041wd8.execute-api.us-east-1.amazonaws.com/beta/DonutDBFunction')
   .then(response => response.json())
   .then(data => console.log(data));
+  
   return (
     <div className="App">
       <header className="App-header">

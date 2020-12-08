@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const [items, setItems] = useState("");
+fetch('https://61eq041wd8.execute-api.us-east-1.amazonaws.com/beta/DonutDBFunction')
+.then(response => response.json())
+.then(data => setItems(data.body.Items));
+
+console.log(items)
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App items={items} />
   </React.StrictMode>,
   document.getElementById('root')
 );

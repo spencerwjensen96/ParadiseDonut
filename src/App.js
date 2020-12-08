@@ -1,14 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, {useState} from 'react';
 
 
 function App() {
-
+  const [items, setItems] = "";
   fetch('https://61eq041wd8.execute-api.us-east-1.amazonaws.com/beta/DonutDBFunction')
   .then(response => response.json())
-  .then(data => console.log(data.body.Items));
+  .then(data => setItems(data.body.Items));
 
+console.log(items)
   return (
 
           <div>

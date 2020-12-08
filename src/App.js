@@ -9,7 +9,7 @@ function App() {
   .then(response => response.json())
   .then(data => setItems(data.body.Items));
 
-console.log(items)
+console.log(items(1))
   return (
 
           <div>

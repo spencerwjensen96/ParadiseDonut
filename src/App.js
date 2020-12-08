@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import React, {useState, useEffect} from 'react';
 import {getList} from './list'
-
+import { Card, Row, Col, Container } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
     return () => mounted = false;
   }, [])
 
-
+console.log(list)
 
 
 
@@ -43,25 +44,50 @@ function App() {
             </nav>
             ​
             {/* Top menu */}
-            <div className="w3-top">
+            <hr id="home" />
+            <div className="w3-top" style={{color:"blue"}}>
               <div className="w3-white w3-xlarge" style={{maxWidth: '1200px', margin: 'auto'}}>
                 <div className="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
-                <div className="w3-right w3-padding-16">Mail</div>
-                <div className="w3-center w3-padding-16">Paradise Donut Company - a family company</div>
+                <div  className="w3-right w3-padding-16"> <a href="#about" onclick="w3_close()" className="w3-bar-item w3-button">About</a></div>
+                <div className="w3-center w3-padding-16"><a href="#home" onclick="w3_close()" className="w3-bar-item w3-button">Paradise Donut Company</a></div>
               </div>
             </div>
             {/* !PAGE CONTENT! */}
-            <div className="w3-main w3-content w3-padding" style={{maxWidth: '80%', marginTop: '100px'}}>
+            <div className="w3-main w3-content" style={{maxWidth: '80%', marginTop: '100px'}}>
               ​
         
-                <div>   
-                      <ul className="flex-container">
-                          {list.map(item => <img key={item.PK} src={item.URL} />)}
-                      </ul>
-                </div>
+                {/* <div className="flex-container">   
+                    <div>
+                          {list.map(item => <img key={item.PK} src={item.URL} /> )}
+                          {list.map(item => <h3 key={item.PK}><b>{item.Name} </b> </h3>)}
+                    </div>
+                </div> */}
 
-              <br></br>
-              <br></br>
+          <div className="w3-center">
+              <Container>
+                <Row>
+                  {list.map((item, id) => {
+                      return (
+                        <Col key={id} md="3" className="d-flex" >
+                        <Card style={{ width: '20rem', marginBottom:"2rem"}}>
+                            <Card.Img variant="top" src={item.URL} ></Card.Img>
+                            <Card.Body>
+                                <Card.Title><b>{item.Name}</b></Card.Title>
+                                <br></br>
+                                <Card.Text>
+                                  Odio aenean sed adipiscing diam.  Nullam eget felis eget nunc lobortis mattis aliquam faucibus. 
+                                </Card.Text>
+                            </Card.Body>  
+                        </Card>
+                    </Col>
+                      )
+                  })}
+                </Row>
+              </Container>
+
+          </div>
+
+
            ​
               {/* Pagination */}
               <div className="w3-center w3-padding-32">

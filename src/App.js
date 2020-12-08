@@ -59,7 +59,7 @@ function App() {
                 
                 <div className="w3-quarter">
                   <img src="https://is531-paradisedonut-finalproject.s3.amazonaws.com/FinalMedia/d%231.png" alt="Sandwich" style={{width: '100%'}} />
-                   <ul>Glazed :  {list.map(item => <li key={item.PK}>{item.Glazed}</li>)}</ul>
+                   <ul>Glazed :  {list.map(item => <li key={item.PK}> <img src={item.URL}  style={{width: '100%'}} /></li>)}</ul>
                   <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
                   
                 </div>

@@ -7,7 +7,7 @@ function App() {
 
   fetch('https://61eq041wd8.execute-api.us-east-1.amazonaws.com/beta/DonutDBFunction')
   .then(response => response.json())
-  .then(data => console.log(data.Items));
+  .then(data => console.log(data.body.Items));
 
   return (
 

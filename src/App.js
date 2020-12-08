@@ -1,13 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {getList} from './list'
 
 
 function App() {
-console.log(this.props.items)
+
+  const [list, setList] = useState([]);
+
+
+  useEffect(() => {
+    let mounted = true;
+    getList()
+      .then(items => {
+        if(mounted) {
+          setList(items.body.Items)
+        }
+      })
+    return () => mounted = false;
+  }, [])
+
+  
+
+
+
   return (
 
-          <div>
+        <div>
+                        
             <title>Paradise Donut Company</title>
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,11 +55,17 @@ console.log(this.props.items)
               ​
               {/* First Photo Grid*/}
               <div className="w3-row-padding w3-padding-16 w3-center" id="donut">
+                
+                
                 <div className="w3-quarter">
-                  <img src="/w3images/sandwich.jpg" alt="Sandwich" style={{width: '100%'}} />
-                  <h3>The Perfect Sandwich, A Real NYC Classic</h3>
+                  <img src="https://is531-paradisedonut-finalproject.s3.amazonaws.com/FinalMedia/d%231.png" alt="Sandwich" style={{width: '100%'}} />
+                   <ul>Glazed :  {list.map(item => <li key={item.PK}>{item.Glazed}</li>)}</ul>
                   <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+                  
                 </div>
+
+       
+
                 <div className="w3-quarter">
                   <img src="/w3images/steak.jpg" alt="Steak" style={{width: '100%'}} />
                   <h3>Let Me Tell You About This Steak</h3>
